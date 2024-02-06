@@ -10,13 +10,14 @@
     "fileStates": {
         "level-01.tmx": {
             "expandedObjectLayers": [
-                2
+                2,
+                3
             ],
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 1.0708,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 368,
-                "y": 184
+                "x": 383.82517743742994,
+                "y": 242.34217407545756
             }
         },
         "level-02": {
@@ -28,11 +29,15 @@
             }
         },
         "level-02.tmx": {
+            "expandedObjectLayers": [
+                2,
+                3
+            ],
             "scale": 1.3,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 370.7692307692307,
-                "y": 128.84615384615384
+                "x": 369.23076923076917,
+                "y": 128.07692307692307
             }
         },
         "pixel adventure.tsx": {

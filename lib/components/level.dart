@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flame/components.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:pixel_adventure/components/background_tile.dart';
+import 'package:pixel_adventure/components/checkpoint.dart';
 import 'package:pixel_adventure/components/collisions_block.dart';
 import 'package:pixel_adventure/components/fruit.dart';
 import 'package:pixel_adventure/components/player.dart';
@@ -39,6 +40,7 @@ class Level extends World with HasGameRef<PixelAdventure> {
         switch (spawnpoint.class_) {
           case 'Player':
             player.position = Vector2(spawnpoint.x, spawnpoint.y);
+            player.scale.x = 1;
             add(player);
             break;
           case 'Fruit':
@@ -62,6 +64,18 @@ class Level extends World with HasGameRef<PixelAdventure> {
             );
             add(saw);
             break;
+          case 'Checkpoint':
+            final checkpoint = CheckPoint(
+              position: Vector2(
+                spawnpoint.x,
+                spawnpoint.y,
+              ),
+              size: Vector2(
+                spawnpoint.width,
+                spawnpoint.height,
+              ),
+            );
+            add(checkpoint);
           default:
         }
       }
@@ -99,23 +113,15 @@ class Level extends World with HasGameRef<PixelAdventure> {
 
   void _scrollingBackground() {
     final backgroundLayer = level.tileMap.getLayer('background');
-    const tileSize = 64;
 
-    final numTileY = (game.size.y / tileSize).ceil();
-    final numTileX = (game.size.x / tileSize).ceil() + 3;
     if (backgroundLayer != null) {
       final backgroundColor =
           backgroundLayer.properties.getValue('BackgroundColor');
-
-      for (double y = 0; y < game.size.y / numTileY; y++) {
-        for (double x = 0; x < numTileX; x++) {
-          final backgroundTile = BackgroundTile(
-            color: backgroundColor ?? 'Gray',
-            position: Vector2(x * tileSize, y * tileSize - tileSize),
-          );
-          add(backgroundTile);
-        }
-      }
+      final backgroundTile = BackgroundTile(
+        color: backgroundColor ?? 'Gray',
+        position: Vector2(0, 0),
+      );
+      add(backgroundTile);
     }
   }
 }
