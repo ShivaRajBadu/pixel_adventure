@@ -23,6 +23,9 @@ class PixelAdventure extends FlameGame
   Player player = Player(character: 'Ninja Frog');
   late JoystickComponent joystick;
   bool showControls = false;
+  bool playSound = true;
+  double soundVolume = 1.0;
+
   List<String> levelNames = [
     'level-01',
     'level-02',
@@ -93,6 +96,9 @@ class PixelAdventure extends FlameGame
       _loadLevel();
     } else {
       // no more level;
+      // restart the game;
+      currentLevelIndex = 0;
+      _loadLevel();
     }
   }
 
