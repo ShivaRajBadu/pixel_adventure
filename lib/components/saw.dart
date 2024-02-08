@@ -9,15 +9,12 @@ class Saw extends SpriteAnimationComponent with HasGameRef<PixelAdventure> {
   final double offNeg;
   final double offPos;
   Saw({
-    position,
-    size,
+    super.position,
+    super.size,
     this.isVertical = false,
     this.offNeg = 0,
     this.offPos = 0,
-  }) : super(
-          position: position,
-          size: size,
-        );
+  });
   static const double sawSpeed = 0.03;
   static const moveSpeed = 70;
   static const tileSize = 16;

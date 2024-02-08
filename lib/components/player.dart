@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:pixel_adventure/components/checkpoint.dart';
 import 'package:pixel_adventure/components/collisions_block.dart';
 import 'package:pixel_adventure/components/custom_hitbox.dart';
+import 'package:pixel_adventure/components/enemy.dart';
 import 'package:pixel_adventure/components/fruit.dart';
 import 'package:pixel_adventure/components/saw.dart';
 import 'package:pixel_adventure/pixel_adventrue.dart';
@@ -110,7 +111,7 @@ class Player extends SpriteAnimationGroupComponent
       Set<Vector2> intersectionPoints, PositionComponent other) {
     if (!reachedCheckpoint) {
       if (other is Fruit) other.collidedWithPlayer();
-
+      if (other is Enemy) other.colliededWithPlayer();
       if (other is Saw) _respawn();
       if (other is CheckPoint && !reachedCheckpoint) _reachedCheckpoint();
     }
@@ -301,5 +302,9 @@ class Player extends SpriteAnimationGroupComponent
     const waitToChangeDuration = Duration(seconds: 3);
 
     Future.delayed(waitToChangeDuration, () => game.loadNextLevel());
+  }
+
+  void collidedWithEnemy() {
+    _respawn();
   }
 }

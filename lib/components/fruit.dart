@@ -10,13 +10,10 @@ class Fruit extends SpriteAnimationComponent
     with HasGameRef<PixelAdventure>, CollisionCallbacks {
   final String fruit;
   Fruit({
-    position,
-    size,
+    super.position,
+    super.size,
     this.fruit = 'Apple',
-  }) : super(
-          position: position,
-          size: size,
-        );
+  });
   final double stepTime = 0.05;
   bool collected = false;
   final hitbox = CustomHitbox(offsetX: 10, offsetY: 10, width: 12, height: 12);

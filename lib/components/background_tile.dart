@@ -6,7 +6,7 @@ import 'package:flutter/painting.dart';
 
 class BackgroundTile extends ParallaxComponent {
   final String color;
-  BackgroundTile({position, this.color = 'Gray'}) : super(position: position);
+  BackgroundTile({super.position, this.color = 'Gray'});
   final double scrollSpeed = 40;
   @override
   FutureOr<void> onLoad() async {
